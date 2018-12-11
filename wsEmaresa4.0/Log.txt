@@ -1,0 +1,13 @@
+
+10-12-2018 18:43: Entrada: aa | Salida: {"Respuesta":"OK"}
+10-12-2018 18:44: Entrada: aa | Salida: {"Respuesta":"OK"}
+10-12-2018 18:46: Entrada: Entrada:  | Salida: aaSalida:  | XML: {"Error":"Error en respuesta"}XML: 
+10-12-2018 18:47: Entrada: aa | Salida: {"Respuesta":"OK"}
+10-12-2018 18:49: XML: <BizAgiWSParam>  <Entities>     <M_ProductosCargados businessKey="SKU='881222922'" >        <Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia>        <Pais>1</Pais>     </M_ProductosCargados>  </Entities> </BizAgiWSParam> | Salida JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}}
+10-12-2018 18:50: XML: <BizAgiWSParam>  <Entities>     <M_ProductosCargados businessKey="SKU='881222922'" >        <Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia>        <Pais>1</Pais>     </M_ProductosCargados>  </Entities> </BizAgiWSParam> | Salida JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}}
+10-12-2018 18:51: Entrada: Prueba | Salida: {"Respuesta":"OK"}
+10-12-2018 18:55: XML: <BizAgiWSParam>  <Entities>     <M_ProductosCargados businessKey="SKU='881222922'" >        <Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia>        <Pais>1</Pais>     </M_ProductosCargados>  </Entities> </BizAgiWSParam> | Salida JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}}
+10-12-2018 18:55: Entrada: aa | Salida: {"Respuesta":"OK"}
+11-12-2018 15:16: [ConvertirXMLaJSON] -- xmlNode: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+11-12-2018 15:20: [ConvertirXMLaJSON] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+11-12-2018 15:28: [RetornaOK] -- Entrada: Entrada de prueba | Salida: {"Respuesta":"OK"}

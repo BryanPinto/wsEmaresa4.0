@@ -47,6 +47,50 @@ namespace wsEmaresa4._0
                               "[RetornaOK] -- Entrada: " + jsonString + " | " + "Salida: "+ salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
+
+                    //declarar xml de creación
+                    string xmlCreacion = @"<?xml version=""1.0""?>
+                                            <BizAgiWSParam>
+                                                <domain>domain</domain>
+                                                <userName>admon</userName>
+                                                <Cases>
+                                                    <Case>
+                                                        <Process>CopyProcesoDeCompras</Process>
+                                                        <Entities>
+                                                            <ProcesodeCompras>
+                                                                <NroSolicitudERP>ASD</NroSolicitudERP>
+                                                                <CentrodeCostos>ASD</CentrodeCostos>
+                                                                <FechaCotizacion>2018-12-11</FechaCotizacion>
+                                                                <FechaSolicitud>2018-12-11</FechaSolicitud>
+                                                                <Solicitante>ASD</Solicitante>
+                                                                <Condp_Pago>ASD</Condp_Pago>
+                                                                <Tipo_compra>ASD</Tipo_compra>
+                                                                <ObservacionSolicitud>ASD</ObservacionSolicitud>
+                                                                <Itemgeneral>1</Itemgeneral>
+                                                                <ItemSolicitud>1</ItemSolicitud>
+                                                                <TotalCotizado>1</TotalCotizado>
+                                                                <DetalleCotizacion>
+                                                                    <CodProducto>ASD</CodProducto>
+                                                                    <Tipo_Concepto>ASD</Tipo_Concepto>
+                                                                    <DescripcionAmpliada>ASD</DescripcionAmpliada>
+                                                                    <NombreProveedor>ASD</NombreProveedor>
+                                                                    <Cantidad>ASD</Cantidad>
+                                                                    <UnidadMedida>ASD</UnidadMedida>
+                                                                    <PrecioUnit>ASD</PrecioUnit>
+                                                                    <Neto>ASD</Neto>
+                                                                    <Observacion>ASD</Observacion>
+                                                                    <MotivoRechazo>ASD</MotivoRechazo>
+                                                                </DetalleCotizacion>
+                                                            </ProcesodeCompras>
+                                                        </Entities>
+                                                    </Case>
+                                                </Cases>
+                                            </BizAgiWSParam>";
+                    //crear instancia
+                    BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
+
+
+                    string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
                     //retornar salida
                     return salida;
                 }

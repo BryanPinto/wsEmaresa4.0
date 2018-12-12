@@ -59,7 +59,6 @@ namespace wsEmaresa4._0
                                                         <Entities>
                                                             <ProcesodeCompras>
                                                                 <NroSolicitudERP>ASD</NroSolicitudERP>
-                                                                <CentrodeCostos>ASD</CentrodeCostos>
                                                                 <FechaCotizacion>2018-12-11</FechaCotizacion>
                                                                 <FechaSolicitud>2018-12-11</FechaSolicitud>
                                                                 <Solicitante>ASD</Solicitante>
@@ -74,10 +73,10 @@ namespace wsEmaresa4._0
                                                                     <Tipo_Concepto>ASD</Tipo_Concepto>
                                                                     <DescripcionAmpliada>ASD</DescripcionAmpliada>
                                                                     <NombreProveedor>ASD</NombreProveedor>
-                                                                    <Cantidad>ASD</Cantidad>
+                                                                    <Cantidad>1</Cantidad>
                                                                     <UnidadMedida>ASD</UnidadMedida>
-                                                                    <PrecioUnit>ASD</PrecioUnit>
-                                                                    <Neto>ASD</Neto>
+                                                                    <PrecioUnit>1</PrecioUnit>
+                                                                    <Neto>1</Neto>
                                                                     <Observacion>ASD</Observacion>
                                                                     <MotivoRechazo>ASD</MotivoRechazo>
                                                                 </DetalleCotizacion>

@@ -45,3 +45,4 @@
 12-12-2018 16:31: [RetornaOK] -- Entrada: zzz | Salida: {"Respuesta":"OK"}
 12-12-2018 16:32: [RetornaOK] -- Entrada: zzz | Salida: {"Respuesta":"OK"}
 12-12-2018 16:32: [RetornaOK] -- Entrada: zzz | Salida: {"Respuesta":"OK"}
+31-12-2018 13:27: [ConvertirXMLaJSON] -- Salida: {"Error":"Un nombre no puede empezar con el carácter ' ', valor hexadecimal 0x20. línea 1, posición 49."}

@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Xml;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
+using System.Web.Script.Services;
 
 namespace wsEmaresa4._0
 {
@@ -22,63 +23,33 @@ namespace wsEmaresa4._0
     public class MiddlewareTest : System.Web.Services.WebService
     {
         [WebMethod]
-        public string Estado(int response)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void Estado(int response)
         {
-            int respuesta;
+            //int respuesta;
             EstadoCotizacion json = new EstadoCotizacion();
-            string xml;
             if (response == 2)
             {
                 //Approve
                 json.CodigoEstado = response;
                 json.DetalleRespuesta = "Aprobado";
-                respuesta = response;
-                xml = @"<?xml version='1.0' encoding='ISO - 8859 - 1'?>";
-                xml += @"< EstadoCotizacion xmlns = 'http://tempuri.org/' xmlns: xsd = 'http://www.w3.org/2001/XMLSchema' xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance' >";
-                xml += "< CodigoEstado > " + response + @" </ CodigoEstado >";
-                xml += "< DetalleRespuesta > Aprobado </ DetalleRespuesta >";
-                xml += "</ EstadoCotizacion > ";
-
             }
             else if (response == 1)
             {
                 //Reject
                 json.CodigoEstado = response;
                 json.DetalleRespuesta = "Rechazado";
-                respuesta = response;
-                xml = @"<?xml version='1.0' encoding='ISO - 8859 - 1'?>";
-                xml += @"< EstadoCotizacion xmlns = 'http://tempuri.org/' xmlns: xsd = 'http://www.w3.org/2001/XMLSchema' xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance' >";
-                xml += "< CodigoEstado > " + response + @" </ CodigoEstado >";
-                xml += "< DetalleRespuesta > Rechazado </ DetalleRespuesta >";
-                xml += "</ EstadoCotizacion > ";
             }
             else
             {
                 //Undefined
                 json.CodigoEstado = 0;
                 json.DetalleRespuesta = "Estado Indefinido";
-                respuesta = 0;
-                xml = @"<?xml version='1.0' encoding='ISO - 8859 - 1'?>";
-                xml += @"< EstadoCotizacion xmlns = 'http://tempuri.org/' xmlns: xsd = 'http://www.w3.org/2001/XMLSchema' xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance' >";
-                xml += "< CodigoEstado > " + response + @" </ CodigoEstado >";
-                xml += "< DetalleRespuesta > Indefinido </ DetalleRespuesta >";
-                xml += "</ EstadoCotizacion > ";
             }
-            //XmlSerializer serializer = new XmlSerializer(typeof(EstadoCotizacion));
-
-            //StreamReader reader = new StreamReader();
-            //var schema = (syscur_historial_schema)serializer.Deserialize(reader);
-            //reader.Close();
-            //string JsonResult = String.Empty;
-            ////Generar un nuevo documento XML
-            //XmlDocument doc = new XmlDocument();
-            ////Asignar al documento el XML enviado
-            //doc.LoadXml(json.ToString());
-            ////Utilizar variable json para realizar conversión
-            //JsonResult = JsonConvert.SerializeXmlNode(doc);
-            //int respuesta = json.CodigoEstado;
-            string sjson = ConvertirXMLaJSON(xml);
-            return (sjson);
+            //Serializar xml del objeto EstadoCotizacion
+            var jsonRequest = JsonConvert.SerializeObject(json);
+            //retornar objeto JSON
+            Context.Response.Write(jsonRequest);
         }
 
         [WebMethod]

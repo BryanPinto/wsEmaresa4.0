@@ -23,33 +23,64 @@ namespace wsEmaresa4._0
     public class MiddlewareTest : System.Web.Services.WebService
     {
         [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void Estado(int response)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
+        public EstadoCotizacion Estado(int response)
         {
-            //int respuesta;
-            EstadoCotizacion json = new EstadoCotizacion();
-            if (response == 2)
+            try
             {
-                //Approve
-                json.CodigoEstado = response;
-                json.DetalleRespuesta = "Aprobado";
+                //int respuesta;
+                EstadoCotizacion json = new EstadoCotizacion();
+                if (response == 2)
+                {
+                    //Approve
+                    json.CodigoEstado = response;
+                    json.DetalleRespuesta = "Aprobado";
+                }
+                else if (response == 1)
+                {
+                    //Reject
+                    json.CodigoEstado = response;
+                    json.DetalleRespuesta = "Rechazado";
+                }
+                else
+                {
+                    //Undefined
+                    json.CodigoEstado = 0;
+                    json.DetalleRespuesta = "Estado Indefinido";
+                }
+                
+                //Serializar xml del objeto EstadoCotizacion
+                var jsonRequest = JsonConvert.SerializeObject(json);
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath;
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[Estado] -- Codigo estado: " + response + "|" + " JSON: " + jsonRequest);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                //retornar objeto JSON
+                //Context.Response.Write(jsonRequest);
+                return json;
             }
-            else if (response == 1)
+            catch(Exception ex)
             {
-                //Reject
-                json.CodigoEstado = response;
-                json.DetalleRespuesta = "Rechazado";
+                EstadoCotizacion json = new EstadoCotizacion();
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath;
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[Estado] -- Mensaje error: " + ex.Message);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                return json;
             }
-            else
-            {
-                //Undefined
-                json.CodigoEstado = 0;
-                json.DetalleRespuesta = "Estado Indefinido";
-            }
-            //Serializar xml del objeto EstadoCotizacion
-            var jsonRequest = JsonConvert.SerializeObject(json);
-            //retornar objeto JSON
-            Context.Response.Write(jsonRequest);
+            
         }
 
         [WebMethod]

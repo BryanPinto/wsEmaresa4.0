@@ -9,6 +9,8 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using System.Web.Script.Services;
+using System.Net;
+
 
 namespace wsEmaresa4._0
 {
@@ -28,6 +30,8 @@ namespace wsEmaresa4._0
         {
             try
             {
+                string jsonToRandom = "";
+                var xmlBizagi = "";
                 //int respuesta;
                 EstadoCotizacion json = new EstadoCotizacion();
                 if (response == 2)
@@ -35,20 +39,54 @@ namespace wsEmaresa4._0
                     //Approve
                     json.CodigoEstado = response;
                     json.DetalleRespuesta = "Aprobado";
+
+                    //
+                    //string jsonToRandom = "{\"tido\":\"" + TIDO + "\"," +
+                    //           "\"nudo\":\"" + NUDO + "\"," +
+                    //            "\"empresa\":\"" + EMPRESA + "\"}";
+                    jsonToRandom = "{\"status\":\" OK \"," +
+                               "\"statusCode\":\" 200 \"," +
+                                "\"msg\":\" Document processed succesfully \"," +
+                                "\"document\":{" +
+                                "\"tido\":\" TIDO \"," +
+                                "\"nudo\":\" NUDO \"" +
+                                "}" +
+                                "}";
+
+                    // xmlBizagi = JsonConvert.DeserializeXmlNode(jsonToRandom).OuterXml;
                 }
                 else if (response == 1)
                 {
                     //Reject
                     json.CodigoEstado = response;
                     json.DetalleRespuesta = "Rechazado";
+
+                    jsonToRandom = "{\"status\":\" OK \"," +
+                               "\"statusCode\":\" 200 \"," +
+                                "\"msg\":\" Document processed unsuccesfully \"," +
+                                "\"document\":{" +
+                                "\"tido\":\" TIDO \"," +
+                                "\"nudo\":\" NUDO \"" +
+                                "}" +
+                                "}";
                 }
                 else
                 {
                     //Undefined
                     json.CodigoEstado = 0;
                     json.DetalleRespuesta = "Estado Indefinido";
+
+                    jsonToRandom = "{\"status\":\" ERROR \"," +
+                               "\"statusCode\":\" 400 \"," +
+                                "\"msg\":\" ERROR processing document \"," +
+                                "\"document\":{" +
+                                "\"tido\":\" TIDO \"," +
+                                "\"nudo\":\" NUDO \"" +
+                                "}" +
+                                "}";
                 }
-                
+
+                json.DetalleRespuesta = jsonToRandom;
                 //Serializar xml del objeto EstadoCotizacion
                 var jsonRequest = JsonConvert.SerializeObject(json);
                 //Escribir log
@@ -58,7 +96,7 @@ namespace wsEmaresa4._0
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[Estado] -- Codigo estado: " + response + "|" + " JSON: " + jsonRequest);
+                          "[Estado] -- Codigo estado: " + response + "|" + " JSON: " + jsonToRandom + "|" + "XML a Bizagi: " + xmlBizagi);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar objeto JSON
@@ -83,6 +121,121 @@ namespace wsEmaresa4._0
             
         }
 
+        //public void PostData(string NUDO, string TIDO, string EMPRESA)
+        //{
+            
+        //    var httpclient = new HttpClient();
+        //    httpclient.BaseAddress = new Uri("http://33.248.292.99:8094/bizzdesk/sysconfig/api/");
+        //    var sys = new Retorno()
+        //    {
+        //        NUDO = sName,
+        //        description = sDescrip
+        //    };
+        //    httpclient.PostAsJsonAsync("system", sys);
+        //}
+
+        [WebMethod]
+        public string SendDocData(string NUDO, string TIDO, string EMPRESA)
+        {
+            //string aJson = "{\"NUDO\":\"" + NUDO + ", \"TIDO\" :\""+TIDO+ " ,\"EMPRESA\" :\"" +EMPRESA+ " \"}";
+            string res = "Empty";
+            try
+            {
+                var url = "http://172.20.42.160:3002/api/xdocs";
+
+                TIDO.Trim();
+                NUDO.Trim();
+                EMPRESA.Trim();
+
+
+                var webrequest = (HttpWebRequest)WebRequest.Create(url);
+                webrequest.ContentType = "application/json";
+                webrequest.Method = "POST";
+                webrequest.Timeout = 10000;
+                string json = "{\"tido\":\""+TIDO+"\"," +
+                                   "\"nudo\":\""+NUDO+"\"," +
+                                    "\"empresa\":\""+EMPRESA+"\"}";
+
+                
+
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath;
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[SendDocData] --  Json a random: " + json);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                //Fin Log
+                using (var streamWriter = new StreamWriter(webrequest.GetRequestStream()))
+                {
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                }
+                string result;
+                HttpWebResponse httpResponse = (HttpWebResponse)webrequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();
+                }
+                //Escribir log
+                 rutaLog = HttpRuntime.AppDomainAppPath;
+                 sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[Respuesta Random] -- Mensaje: " + result);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                //Fin Log
+
+                res = ConvertirJSONaXML(json);
+                File.AppendAllText(rutaLog + "Log.txt", "9");
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath;
+                sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[JSON TRANSFORMADO] -- JSON FINAL: " + res);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+            }
+            catch(Exception error)
+            {
+
+                
+                res = "{\"status\":\" ERROR \"," +
+                               "\"statusCode\":\" 500  \"," +
+                                "\"msg\":\" "+ error.Message + " \"," +
+                                "\"document\":{" +
+                                "\"tido\":\""+TIDO+"\"," +
+                                "\"nudo\":\""+NUDO+"\"," +
+                                "\"empresa\":\""+EMPRESA+"\"" +
+                                "}" +
+                                "}";
+
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath;
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[Error] -- ERROR json: " + res);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                //Fin Log
+            }
+
+            return res;
+        }
+
+
         [WebMethod]
         public string GetStatus(int response)
         {
@@ -90,9 +243,11 @@ namespace wsEmaresa4._0
             string json = String.Empty;
             if (response == 2)
             {
+                
                 //Approve
                 //json.codigoEstado = response;
                 //json.detalleRespuesta = "Aprobado";
+
                 json = "aprobado";
 
             }
@@ -256,7 +411,7 @@ namespace wsEmaresa4._0
                 return salida;
             }
         }
-
+        
         [WebMethod]
         //Recibir xml
         public string ConvertirJSONaXML(string json)
@@ -295,10 +450,28 @@ namespace wsEmaresa4._0
             }
         }
     }
+
     
+
     public class EstadoCotizacion
     {
         public int CodigoEstado { get; set; }
         public string DetalleRespuesta { get; set; }
+    }
+    public class Raiz
+    {
+        public string EMPRESA { get; set; }
+        public string NUDO { get; set; }
+        public string TIDO { get; set; }
+        
+    }
+    public class RootObject
+    {
+        public Raiz Raiz { get; set; }
+    }
+    public class Retorno
+    {
+        public RootObject root { get; set; }
+        public string MensajeSalida { get; set; }
     }
 }

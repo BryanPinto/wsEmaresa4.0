@@ -49,3 +49,68 @@
 02-01-2019 9:26: [ConvertirXMLaJSON] -- Salida: {"Error":"Un nombre no puede empezar con el carácter ' ', valor hexadecimal 0x20. línea 1, posición 49."}
 02-01-2019 12:08: [Estado] -- Codigo estado: 1| JSON: {"CodigoEstado":1,"DetalleRespuesta":"Rechazado"}
 02-01-2019 12:12: [Estado] -- Codigo estado: 1| JSON: {"CodigoEstado":1,"DetalleRespuesta":"Rechazado"}
+04-01-2019 18:28: [Estado] -- Codigo estado: 2| JSON: {"CodigoEstado":2,"DetalleRespuesta":"Aprobado"}
+07-01-2019 18:25: [ConvertirJSONaXML] -- Salida: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:26: [ConvertirJSONaXML] -- Salida: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:26: [Estado] -- Codigo estado: 2| JSON: {"CodigoEstado":2,"DetalleRespuesta":"Aprobado"}
+11-01-2019 10:27: [ConvertirJSONaXML] -- Salida: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:27: [Estado] -- Codigo estado: 2| JSON: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:29: [ConvertirJSONaXML] -- Salida: {"Error":"Referencia a objeto no establecida como instancia de un objeto."}
+11-01-2019 10:29: [Estado] -- Codigo estado: 2| JSON: {"Error":"Referencia a objeto no establecida como instancia de un objeto."}
+11-01-2019 10:30: [ConvertirJSONaXML] -- Salida: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:30: [Estado] -- Codigo estado: 2| JSON: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+11-01-2019 10:36: [Estado] -- Mensaje error: JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName.
+11-01-2019 10:40: [Estado] -- Mensaje error: JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName.
+11-01-2019 10:41: [Estado] -- Mensaje error: JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName.
+11-01-2019 10:42: [Estado] -- Codigo estado: 1| JSON: |XML a Bizagi: 
+11-01-2019 10:42: [Estado] -- Codigo estado: 0| JSON: |XML a Bizagi: 
+11-01-2019 10:42: [Estado] -- Mensaje error: JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName.
+11-01-2019 10:42: [Estado] -- Codigo estado: 1| JSON: |XML a Bizagi: 
+11-01-2019 10:42: [Estado] -- Codigo estado: 1| JSON: |XML a Bizagi: 
+11-01-2019 10:44: [Estado] -- Mensaje error: JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName.
+11-01-2019 10:44: [Estado] -- Codigo estado: 2| JSON: {"status":" OK ","statusCode":" 200 ","msg":" Document processed succesfully ","document:{"tido":" OCC ","nudo":" 00000000654321 ","}"}|XML a Bizagi: 
+11-01-2019 10:51: [Estado] -- Codigo estado: 2| JSON: {"status":" OK ","statusCode":" 200 ","msg":" Document processed succesfully ","document":{"tido":" OCC ","nudo":" 00000000654321 "}}|XML a Bizagi: 
+11-01-2019 10:56: [Estado] -- Codigo estado: 1| JSON: {"status":" OK ","statusCode":" 200 ","msg":" Document processed unsuccesfully ","document":{"tido":" TestTIDO ","nudo":" TestNUDO "}}|XML a Bizagi: 
+11-01-2019 10:58: [Estado] -- Codigo estado: 2| JSON: {"status":" OK ","statusCode":" 200 ","msg":" Document processed succesfully ","document":{"tido":" OCC ","nudo":" 00000000412312 "}}|XML a Bizagi: 
+11-01-2019 11:32: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"2426859","empresa":"04"}
+11-01-2019 11:33: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Se excedió el tiempo de espera de la operación ","document":{"tido":" OCC ","nudo":" 2426859 "}}
+11-01-2019 11:35: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"00000000412312","empresa":"01"}
+11-01-2019 11:36: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Se excedió el tiempo de espera de la operación ","document":{"tido":" OCC ","nudo":" 00000000412312 "}}
+29-03-2019 11:33: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:33: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 "}}
+29-03-2019 11:35: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:35: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ""empresa":" 04 "}}
+29-03-2019 11:36: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:36: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ""empresa":" 04 "}}
+29-03-2019 11:37: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:37: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ""empresa":" 04 "}}
+29-03-2019 11:38: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:38: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ""empresa":" 04 "}}
+29-03-2019 11:39: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:39: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 11:39: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:39: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 11:41: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:41: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 11:48: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 11:48: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 12:11: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}
+29-03-2019 12:11: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 12:13: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}12345
+29-03-2019 12:13: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 12:18: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}12345
+29-03-2019 12:18: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 12:19: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+29-03-2019 12:19: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+29-03-2019 12:20: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+29-03-2019 12:20: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+04-04-2019 10:03: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+04-04-2019 10:03: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+04-04-2019 10:04: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+04-04-2019 10:04: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC ","nudo":" 0000028565 ","empresa":" 04 "}}
+04-04-2019 10:07: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+04-04-2019 10:07: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028565","empresa":"04"}}
+04-04-2019 10:13: [SendDocData] --  Json a random: "{\"tido\":\"OCC\",\"nudo\":\"0000028565\",\"empresa\":\"04\"}"123455.5
+04-04-2019 10:13: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028565","empresa":"04"}}
+04-04-2019 10:25: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
+04-04-2019 10:25: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028565","empresa":"04"}}

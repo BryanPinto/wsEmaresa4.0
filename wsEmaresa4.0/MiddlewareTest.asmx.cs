@@ -146,6 +146,9 @@ namespace wsEmaresa4._0
                 TIDO.Trim();
                 NUDO.Trim();
                 EMPRESA.Trim();
+                TIDO.TrimStart();
+                NUDO.TrimStart();
+                EMPRESA.TrimStart();
 
 
                 var webrequest = (HttpWebRequest)WebRequest.Create(url);

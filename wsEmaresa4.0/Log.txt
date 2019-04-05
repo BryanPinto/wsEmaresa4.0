@@ -114,3 +114,13 @@
 04-04-2019 10:13: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028565","empresa":"04"}}
 04-04-2019 10:25: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028565","empresa":"04"}123455.5
 04-04-2019 10:25: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028565","empresa":"04"}}
+05-04-2019 11:01: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028578","empresa":"04"}
+05-04-2019 11:01: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}
+05-04-2019 11:02: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028578","empresa":"04"}
+05-04-2019 11:02: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}
+05-04-2019 11:03: [SendDocData] --  Json a random: {"tido":" OCC","nudo":" 0000028578","empresa":" 04"}
+05-04-2019 11:03: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":" OCC","nudo":" 0000028578","empresa":" 04"}}
+05-04-2019 11:04: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028578","empresa":"04"}
+05-04-2019 11:04: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}
+05-04-2019 11:11: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028578","empresa":"04"}
+05-04-2019 11:11: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}

@@ -12,7 +12,7 @@ namespace wsEmaresa4._0
         public int CodigoEstado { get; set; }
         public string DetalleRespuesta { get; set; }
     }
-    public class Raiz
+    public class CamposBusqueda
     {
         public string EMPRESA { get; set; }
         public string NUDO { get; set; }
@@ -21,7 +21,7 @@ namespace wsEmaresa4._0
     }
     public class RootObject
     {
-        public Raiz Raiz { get; set; }
+        public CamposBusqueda Raiz { get; set; }
     }
     public class Retorno
     {

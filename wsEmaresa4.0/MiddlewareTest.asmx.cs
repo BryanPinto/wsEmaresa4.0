@@ -242,65 +242,34 @@ namespace wsEmaresa4._0
                 NUDO = NUDO.Trim();
                 EMPRESA = EMPRESA.Trim();
 
+
                 // Creacion de solicitud
                 WebRequest solicitudREST = WebRequest.Create(url);
                 solicitudREST.ContentType = "application/json";
                 solicitudREST.Method = "DELETE";
                 solicitudREST.Timeout = 10000;
-                string json = @"{
-                                    ""tido"":""" + TIDO + @""",
-                                    ""nudo"":""r" + NUDO + @""",
-                                    ""empresa"":""" + EMPRESA + @"""
-                                }";
-                json = json.Replace("\n", string.Empty);
-                json = json.Replace("\t", string.Empty);
-                json = json.Replace("\r", string.Empty);
 
-                // Log trace
-                Util.EscribirLog("[DeleteRegister] -- Json a random:", respuestaSOAP);
 
-                // Enviar solicitud
-                using (var streamWriter = new StreamWriter(solicitudREST.GetRequestStream()))
-                {
-                    // Agregar parametros a enviar
-                    streamWriter.Write(json);
-                    streamWriter.Flush();
-                    streamWriter.Close();
-                }
+                // Campos de busqueda
+                CamposBusqueda camposBusqueda = new CamposBusqueda();
+                camposBusqueda.EMPRESA = EMPRESA;
+                camposBusqueda.NUDO = NUDO;
+                camposBusqueda.TIDO = TIDO;
 
-                // Leer respuesta
-                using (WebResponse response = solicitudREST.GetResponse())
-                {
-                    HttpWebResponse httpResponse = (HttpWebResponse)response;
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        respuestaREST = streamReader.ReadToEnd();
-                    }
 
-                    // Log trace
-                    Util.EscribirLog("[Respuesta] -- Mensaje:", respuestaREST);
+                // Asignar campos del body
+                solicitudREST = Util.AsignarBodyREST(solicitudREST, camposBusqueda);
 
-                    // Respuesta SOAP
-                    respuestaSOAP = ConvertirJSONaXML(respuestaREST);
-                }
+
+                // Leer respuesta RANDOM
+                respuestaREST = Util.LeerRespuestaREST(solicitudREST);
+
+
+                // Respuesta SOAP
+                respuestaSOAP = respuestaREST;
+                //respuestaSOAP = ConvertirJSONaXML(respuestaREST);
             }
-            // Excepcion de error desde RANDOM
-            catch (WebException error)
-            {
-                // Leer mensaje de error de RANDOM
-                using (WebResponse response = error.Response)
-                {
-                    HttpWebResponse httpResponse = (HttpWebResponse)response;
-                    using (Stream data = response.GetResponseStream())
-                    using (var reader = new StreamReader(data))
-                    {
-                        respuestaSOAP = reader.ReadToEnd();
-                    }
-                }
 
-                // Log
-                Util.EscribirLog("[Error] -- ERROR json:", respuestaSOAP);
-            }
             catch (Exception error)
             {
                 // Armar mensaje de error
@@ -308,7 +277,7 @@ namespace wsEmaresa4._0
                             ""status""      :   ""ERROR"",
                             ""statusCode""  :   ""500 "",
                             ""msg""         :   """ + error.Message + @""",
-                            ""document""    :
+                            ""data""    :
                             {
                                 ""tido""    :   """ + TIDO + @""",
                                 ""nudo""    :   """ + NUDO + @""",

@@ -230,3 +230,15 @@
 12-04-2019 12:16: [DeleteRegister] -- Json a random:: 
 12-04-2019 12:17: [Error] -- ERROR json:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"tido":"OCC","nudo":"r666167","empresa":"04"},"msg":"No document found"}
 12-04-2019 12:17: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:31: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:31: [Respuesta Delete] -- Mensaje:: 
+12-04-2019 12:31: [ConvertirJSONaXML] -- Salida: {"Error":"Referencia a objeto no establecida como instancia de un objeto."}
+12-04-2019 12:33: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:34: [Respuesta Delete] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"666167","TIDO":"OCC"}}
+12-04-2019 12:34: [ConvertirJSONaXML] -- Salida: {"Error":"JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifing a DeserializeRootElementName."}
+12-04-2019 12:34: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:34: [Respuesta Delete] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"666167","TIDO":"OCC"}}
+12-04-2019 12:40: [DeleteRegister] -- Json a random:: {"EMPRESA":"04","NUDO":"666167","TIDO":"OCC"}
+12-04-2019 12:40: [Respuesta Delete] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"666167","TIDO":"OCC"}}
+12-04-2019 12:50: [AsignarBodyREST] -- Json a random:: {"EMPRESA":"04","NUDO":"0000028565","TIDO":"OCC"}
+12-04-2019 12:50: [Respuesta RANDOM] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"0000028565","TIDO":"OCC"}}

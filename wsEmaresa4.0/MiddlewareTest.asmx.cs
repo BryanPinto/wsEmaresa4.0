@@ -24,6 +24,8 @@ namespace wsEmaresa4._0
     // [System.Web.Script.Services.ScriptService]
     public class MiddlewareTest : System.Web.Services.WebService
     {
+        private string url = "http://172.20.42.160:3002/api/xdocs";
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
         public EstadoCotizacion Estado(int response)
@@ -121,19 +123,6 @@ namespace wsEmaresa4._0
             
         }
 
-        //public void PostData(string NUDO, string TIDO, string EMPRESA)
-        //{
-            
-        //    var httpclient = new HttpClient();
-        //    httpclient.BaseAddress = new Uri("http://33.248.292.99:8094/bizzdesk/sysconfig/api/");
-        //    var sys = new Retorno()
-        //    {
-        //        NUDO = sName,
-        //        description = sDescrip
-        //    };
-        //    httpclient.PostAsJsonAsync("system", sys);
-        //}
-
         [WebMethod]
         public string SendDocData(string NUDO, string TIDO, string EMPRESA)
         {
@@ -141,7 +130,7 @@ namespace wsEmaresa4._0
             string res = "Empty";
             try
             {
-                var url = "http://172.20.42.160:3002/api/xdocs";
+                
 
                 TIDO.Trim();
                 NUDO.Trim();
@@ -454,27 +443,4 @@ namespace wsEmaresa4._0
         }
     }
 
-    
-
-    public class EstadoCotizacion
-    {
-        public int CodigoEstado { get; set; }
-        public string DetalleRespuesta { get; set; }
-    }
-    public class Raiz
-    {
-        public string EMPRESA { get; set; }
-        public string NUDO { get; set; }
-        public string TIDO { get; set; }
-        
-    }
-    public class RootObject
-    {
-        public Raiz Raiz { get; set; }
-    }
-    public class Retorno
-    {
-        public RootObject root { get; set; }
-        public string MensajeSalida { get; set; }
-    }
 }

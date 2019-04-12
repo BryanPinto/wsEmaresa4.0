@@ -124,3 +124,109 @@
 05-04-2019 11:04: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}
 05-04-2019 11:11: [SendDocData] --  Json a random: {"tido":"OCC","nudo":"0000028578","empresa":"04"}
 05-04-2019 11:11: [Error] -- ERROR json: {"status":" ERROR ","statusCode":" 500  ","msg":" Error en el servidor remoto: (400) Solicitud incorrecta. ","document":{"tido":"OCC","nudo":"0000028578","empresa":"04"}}
+12-04-2019 11:16: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:16: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:16: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:16: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:17: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:17: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:22: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:22: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:22: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:35: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:39: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Se excedió el tiempo de espera de la operación",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:39: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:45: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:45: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:45: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:46: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Se excedió el tiempo de espera de la operación",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:46: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:49: [Error] -- ERROR json:: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Error en el servidor remoto: (400) Solicitud incorrecta.",
+                            "document"    :
+                            {
+                                "tido"    :   "OCC",
+                                "nudo"    :   "0000028565",
+                                "empresa" :   "04"
+                            }
+                        }
+12-04-2019 11:49: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:54: [DeleteRegister] -- Json a random:: 
+12-04-2019 11:59: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:04: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:04: [Error] -- ERROR json:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"tido":"OCC","nudo":"r0000028565","empresa":"04"}}
+12-04-2019 12:16: [DeleteRegister] -- Json a random:: 
+12-04-2019 12:17: [Error] -- ERROR json:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"tido":"OCC","nudo":"r666167","empresa":"04"},"msg":"No document found"}
+12-04-2019 12:17: [DeleteRegister] -- Json a random:: 

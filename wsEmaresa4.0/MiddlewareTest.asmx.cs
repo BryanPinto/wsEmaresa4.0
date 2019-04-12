@@ -24,7 +24,7 @@ namespace wsEmaresa4._0
     // [System.Web.Script.Services.ScriptService]
     public class MiddlewareTest : System.Web.Services.WebService
     {
-        private string url = "http://172.20.42.160:3002/api/xdocs";
+
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
@@ -105,7 +105,7 @@ namespace wsEmaresa4._0
                 //Context.Response.Write(jsonRequest);
                 return json;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 EstadoCotizacion json = new EstadoCotizacion();
                 //Escribir log
@@ -120,7 +120,7 @@ namespace wsEmaresa4._0
                 sb.Clear();
                 return json;
             }
-            
+
         }
 
         [WebMethod]
@@ -130,7 +130,7 @@ namespace wsEmaresa4._0
             string res = "Empty";
             try
             {
-                
+                string url = "http://172.20.42.160:3002/api/xdocs";
 
                 TIDO.Trim();
                 NUDO.Trim();
@@ -144,11 +144,11 @@ namespace wsEmaresa4._0
                 webrequest.ContentType = "application/json";
                 webrequest.Method = "POST";
                 webrequest.Timeout = 10000;
-                string json = "{\"tido\":\""+TIDO+"\"," +
-                                   "\"nudo\":\""+NUDO+"\"," +
-                                    "\"empresa\":\""+EMPRESA+"\"}";
+                string json = "{\"tido\":\"" + TIDO + "\"," +
+                                   "\"nudo\":\"" + NUDO + "\"," +
+                                    "\"empresa\":\"" + EMPRESA + "\"}";
 
-                
+
 
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
@@ -173,8 +173,8 @@ namespace wsEmaresa4._0
                     result = streamReader.ReadToEnd();
                 }
                 //Escribir log
-                 rutaLog = HttpRuntime.AppDomainAppPath;
-                 sb = new StringBuilder();
+                rutaLog = HttpRuntime.AppDomainAppPath;
+                sb = new StringBuilder();
 
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
@@ -197,17 +197,17 @@ namespace wsEmaresa4._0
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
 
-                
+
                 res = "{\"status\":\" ERROR \"," +
                                "\"statusCode\":\" 500  \"," +
-                                "\"msg\":\" "+ error.Message + " \"," +
+                                "\"msg\":\" " + error.Message + " \"," +
                                 "\"document\":{" +
-                                "\"tido\":\""+TIDO+"\"," +
-                                "\"nudo\":\""+NUDO+"\"," +
-                                "\"empresa\":\""+EMPRESA+"\"" +
+                                "\"tido\":\"" + TIDO + "\"," +
+                                "\"nudo\":\"" + NUDO + "\"," +
+                                "\"empresa\":\"" + EMPRESA + "\"" +
                                 "}" +
                                 "}";
 
@@ -227,6 +227,99 @@ namespace wsEmaresa4._0
             return res;
         }
 
+        [WebMethod]
+        public string DeleteRegister(string NUDO, string TIDO, string EMPRESA)
+        {
+            string respuestaSOAP = string.Empty;
+            string respuestaREST = string.Empty;
+            try
+            {
+                // URL solcitud
+                string url = "http://172.20.42.160:3002/api/xdocs";
+
+                // Formarteo de variables
+                TIDO = TIDO.Trim();
+                NUDO = NUDO.Trim();
+                EMPRESA = EMPRESA.Trim();
+
+                // Creacion de solicitud
+                WebRequest solicitudREST = WebRequest.Create(url);
+                solicitudREST.ContentType = "application/json";
+                solicitudREST.Method = "DELETE";
+                solicitudREST.Timeout = 10000;
+                string json = @"{
+                                    ""tido"":""" + TIDO + @""",
+                                    ""nudo"":""r" + NUDO + @""",
+                                    ""empresa"":""" + EMPRESA + @"""
+                                }";
+                json = json.Replace("\n", string.Empty);
+                json = json.Replace("\t", string.Empty);
+                json = json.Replace("\r", string.Empty);
+
+                // Log trace
+                Util.EscribirLog("[DeleteRegister] -- Json a random:", respuestaSOAP);
+
+                // Enviar solicitud
+                using (var streamWriter = new StreamWriter(solicitudREST.GetRequestStream()))
+                {
+                    // Agregar parametros a enviar
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+
+                // Leer respuesta
+                using (WebResponse response = solicitudREST.GetResponse())
+                {
+                    HttpWebResponse httpResponse = (HttpWebResponse)response;
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        respuestaREST = streamReader.ReadToEnd();
+                    }
+
+                    // Log trace
+                    Util.EscribirLog("[Respuesta] -- Mensaje:", respuestaREST);
+
+                    // Respuesta SOAP
+                    respuestaSOAP = ConvertirJSONaXML(respuestaREST);
+                }
+            }
+            // Excepcion de error desde RANDOM
+            catch (WebException error)
+            {
+                // Leer mensaje de error de RANDOM
+                using (WebResponse response = error.Response)
+                {
+                    HttpWebResponse httpResponse = (HttpWebResponse)response;
+                    using (Stream data = response.GetResponseStream())
+                    using (var reader = new StreamReader(data))
+                    {
+                        respuestaSOAP = reader.ReadToEnd();
+                    }
+                }
+
+                // Log
+                Util.EscribirLog("[Error] -- ERROR json:", respuestaSOAP);
+            }
+            catch (Exception error)
+            {
+                // Armar mensaje de error
+                respuestaSOAP = @"{
+                            ""status""      :   ""ERROR"",
+                            ""statusCode""  :   ""500 "",
+                            ""msg""         :   """ + error.Message + @""",
+                            ""document""    :
+                            {
+                                ""tido""    :   """ + TIDO + @""",
+                                ""nudo""    :   """ + NUDO + @""",
+                                ""empresa"" :   """ + EMPRESA + @"""
+                            }
+                        }";
+            }
+
+            // Retornar respuesta
+            return respuestaSOAP;
+        }
 
         [WebMethod]
         public string GetStatus(int response)
@@ -235,7 +328,7 @@ namespace wsEmaresa4._0
             string json = String.Empty;
             if (response == 2)
             {
-                
+
                 //Approve
                 //json.codigoEstado = response;
                 //json.detalleRespuesta = "Aprobado";
@@ -257,8 +350,8 @@ namespace wsEmaresa4._0
                 //json.detalleRespuesta = "Estado Indefinido";
                 json = "desconoce";
             }
-            
-           
+
+
             return (json);
         }
 
@@ -286,7 +379,7 @@ namespace wsEmaresa4._0
                     sb.Append(Environment.NewLine +
                               DateTime.Now.ToShortDateString() + " " +
                               DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + jsonString + " | " + "Salida: "+ salida);
+                              "[RetornaOK] -- Entrada: " + jsonString + " | " + "Salida: " + salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
 
@@ -370,7 +463,7 @@ namespace wsEmaresa4._0
                 doc.LoadXml(xml);
                 //Utilizar variable json para realizar conversión
                 json = JsonConvert.SerializeXmlNode(doc);
-                
+
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
                 StringBuilder sb = new StringBuilder();
@@ -385,7 +478,7 @@ namespace wsEmaresa4._0
 
                 return (json);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Replicar formato JSON para la respuesta error del método
                 string salida = "{\"Error\":\"" + ex.Message + "\"}";
@@ -403,7 +496,7 @@ namespace wsEmaresa4._0
                 return salida;
             }
         }
-        
+
         [WebMethod]
         //Recibir xml
         public string ConvertirJSONaXML(string json)

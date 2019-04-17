@@ -230,8 +230,8 @@ namespace wsEmaresa4._0
         [WebMethod]
         public string DeleteRegister(string NUDO, string TIDO, string EMPRESA)
         {
-            string respuestaSOAP = string.Empty;
-            string respuestaREST = string.Empty;
+            string respuestaParaBizagi = string.Empty;
+            string respuestaRandom = string.Empty;
             try
             {
                 // URL solcitud
@@ -262,18 +262,22 @@ namespace wsEmaresa4._0
 
 
                 // Leer respuesta RANDOM
-                respuestaREST = Util.LeerRespuestaREST(solicitudREST);
+                respuestaRandom = Util.LeerRespuestaREST(solicitudREST);
 
-
-                // Respuesta SOAP
-                respuestaSOAP = respuestaREST;
-                //respuestaSOAP = ConvertirJSONaXML(respuestaREST);
+                // Evaluar respuesta para Bizagi
+                string mensajeError = "\"status\":\"ERROR\"";
+                
+                if (respuestaRandom.Contains(mensajeError))
+                    respuestaParaBizagi = "Error";
+                else
+                    respuestaParaBizagi = "Correcto";
             }
 
             catch (Exception error)
             {
                 // Armar mensaje de error
-                respuestaSOAP = @"{
+                string mensajeError  = 
+                       @"{
                             ""status""      :   ""ERROR"",
                             ""statusCode""  :   ""500 "",
                             ""msg""         :   """ + error.Message + @""",
@@ -284,10 +288,16 @@ namespace wsEmaresa4._0
                                 ""empresa"" :   """ + EMPRESA + @"""
                             }
                         }";
+
+                // Log
+                Util.EscribirLog("[Error DeleteRegister]", mensajeError);
+
+                // Respuesta Bizagi
+                respuestaParaBizagi = "Error";
             }
 
             // Retornar respuesta
-            return respuestaSOAP;
+            return respuestaParaBizagi;
         }
 
         [WebMethod]

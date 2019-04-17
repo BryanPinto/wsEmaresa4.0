@@ -242,3 +242,16 @@
 12-04-2019 12:40: [Respuesta Delete] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"666167","TIDO":"OCC"}}
 12-04-2019 12:50: [AsignarBodyREST] -- Json a random:: {"EMPRESA":"04","NUDO":"0000028565","TIDO":"OCC"}
 12-04-2019 12:50: [Respuesta RANDOM] -- Mensaje:: {"statusCode":400,"status":"ERROR","operation":"rejectKasiDoc","data":{"EMPRESA":"04","NUDO":"0000028565","TIDO":"OCC"}}
+17-04-2019 11:36: [AsignarBodyREST] -- Json a random:: {"EMPRESA":"ads","NUDO":"qwe","TIDO":"132"}
+17-04-2019 11:36: [AsignarBodyREST] -- Asignar campos: : Se excedió el tiempo de espera de la operación
+17-04-2019 11:36: Error DeleteRegister: {
+                            "status"      :   "ERROR",
+                            "statusCode"  :   "500 ",
+                            "msg"         :   "Debe proporcionar un cuerpo de solicitud si establece ContentLength>0 o SendChunked==true. Para ello, llame a [Begin]GetRequestStream antes de [Begin]GetResponse.",
+                            "data"    :
+                            {
+                                "tido"    :   "132",
+                                "nudo"    :   "qwe",
+                                "empresa" :   "ads"
+                            }
+                        }

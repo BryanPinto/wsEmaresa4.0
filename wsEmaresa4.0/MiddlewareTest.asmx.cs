@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Xml.Serialization;
 using System.Web.Script.Services;
 using System.Net;
-
+using System.Configuration;
 
 namespace wsEmaresa4._0
 {
@@ -130,7 +130,8 @@ namespace wsEmaresa4._0
             string res = "Empty";
             try
             {
-                string url = "http://172.20.42.160:3002/api/xdocs";
+                //string url = "http://172.20.42.160:3002/api/xdocs";
+                string url = ConfigurationManager.AppSettings["URL"];
 
                 TIDO.Trim();
                 NUDO.Trim();
@@ -235,8 +236,8 @@ namespace wsEmaresa4._0
             try
             {
                 // URL solcitud
-                string url = "http://172.20.42.160:3002/api/xdocs";
-
+                //string url = "http://172.20.42.160:3002/api/xdocs";
+                string url = ConfigurationManager.AppSettings["URL"];
                 // Formarteo de variables
                 TIDO = TIDO.Trim();
                 NUDO = NUDO.Trim();

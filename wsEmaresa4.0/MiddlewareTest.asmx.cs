@@ -133,21 +133,19 @@ namespace wsEmaresa4._0
                 //string url = "http://172.20.42.160:3002/api/xdocs";
                 string url = ConfigurationManager.AppSettings["URL"];
 
-                TIDO.Trim();
-                NUDO.Trim();
-                EMPRESA.Trim();
-                TIDO.TrimStart();
-                NUDO.TrimStart();
-                EMPRESA.TrimStart();
+                TIDO = TIDO.Trim();
+                NUDO = NUDO.Trim();
+                EMPRESA = EMPRESA.Trim();
+                
 
 
                 var webrequest = (HttpWebRequest)WebRequest.Create(url);
                 webrequest.ContentType = "application/json";
                 webrequest.Method = "POST";
-                webrequest.Timeout = 10000;
-                string json = "{\"tido\":\"" + TIDO + "\"," +
-                                   "\"nudo\":\"" + NUDO + "\"," +
-                                    "\"empresa\":\"" + EMPRESA + "\"}";
+                webrequest.Timeout = 30000;
+                
+                //webrequest.Accept =  "gzip,deflate";
+                string json = "{\"tido\":\"" + TIDO + "\"," +"\"nudo\":\"" + NUDO + "\"," +"\"empresa\":\"" + EMPRESA + "\"}";
 
 
 
@@ -483,7 +481,9 @@ namespace wsEmaresa4._0
         {
             try
             {
-                var xmlNode = JsonConvert.DeserializeXmlNode(json).OuterXml;
+                var xmlNode = "{ \"XML\" : "+json+"}";
+                    
+                    xmlNode = JsonConvert.DeserializeXmlNode(xmlNode).OuterXml;
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
                 StringBuilder sb = new StringBuilder();
@@ -494,7 +494,7 @@ namespace wsEmaresa4._0
                           "[ConvertirJSONaXML] -- JSON: " + json + " | " + "XML: " + xmlNode);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
-                return xmlNode;
+                return xmlNode.ToString();
             }
             catch (Exception ex)
             {
@@ -513,7 +513,7 @@ namespace wsEmaresa4._0
                 //retornar salida
                 return salida;
             }
-        }
+            }
     }
 
 }
